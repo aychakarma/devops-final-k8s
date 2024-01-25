@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deploy
+  name: backend-deploy-dev
   labels:
-   app: backend-app
+    app: backend-app-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend-app
+      app: backend-app-dev
   template:
     metadata:
       labels:
-        app: backend-app
+        app: backend-app-dev
     spec:
       containers:
-      - name: backend-container
-        image: lugar2020/crud-spring-boot
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8020
-        env:
-        - name: DB_HOST
-          value: mysqldb
-        - name: DB_NAME
-          value: crud-db
-        - name: DB_USERNAME
-          value: root
-        - name: DB_PASSWORD
-          value: Password123
+        - name: backend-container
+          image: karma12/equipe-dev-spring-boot
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8070
+          env:
+            - name: DB_HOST
+              value: mysqldbdev
+            - name: DB_NAME
+              value: devops
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASSWORD
+              value: root
